@@ -1,0 +1,22 @@
+2017/11/22 13:56:07
+TPR: 0.8873080366784993
+TNR: 0.9252286809374407
+FPR: 0.07477131906255921
+FNR: 0.11269196332150051
+Accuracy: 0.9070735090152566
+Error: 0.09292649098474341
+Precision: 0.9239766081871345
+Recall: 0.8851540616246498
+F1 Score: 0.9041487839771101
+Confidence Interval Lower Limit(90.0%) : 0.0922661023444446
+Confidence Interval Upper Limit(90.0%) : 0.09358687962504222
+
+Confidence Interval Lower Limit(95.0%) : 0.09213724602438629
+Confidence Interval Upper Limit(95.0%) : 0.09371573594510053
+
+Confidence Interval Lower Limit(98.0%) : 0.09198825590431887
+Confidence Interval Upper Limit(98.0%) : 0.09386472606516795
+
+Confidence Interval Lower Limit(99.0%) : 0.09188758690427333
+Confidence Interval Upper Limit(99.0%) : 0.0939653950652135
+

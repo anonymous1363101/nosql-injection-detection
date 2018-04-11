@@ -1,0 +1,19 @@
+
+Results
+======
+
+Correctly Classified Instances          37              100      %
+Incorrectly Classified Instances         0                0      %
+Kappa statistic                          1
+Mean absolute error                      0.0102
+Root mean squared error                  0.0139
+Relative absolute error                  2.4254 %
+Root relative squared error              3.0414 %
+Total Number of Instances               37
+Precision: 1.0
+Recall: 1.0
+TPR: 1.0
+TNR: 1.0
+FPR: 0.0
+FNR: 0.0
+F-Score: 1.0
