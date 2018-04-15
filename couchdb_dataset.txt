@@ -1,0 +1,300 @@
+GET /db/_all_docs HTTP/1.1 Accept: application/json Host: localhost:5984::::0
+POST /db/_all_docs HTTP/1.1 Accept: application/json Content-Length: 70 Content-Type: application/json Host: localhost:5984 {"keys" : ["Zingylemontart","Yogurtraita"]}::::0
+POST /db/_bulk_docs HTTP/1.1 Accept: application/json Content-Length: 109 Content-Type:application/json Host: localhost:5984 {"docs": [{"_id": "FishStew"},{"_id": "LambStew","_rev": "2-0786321986194c92dd3b57dfbfc741ce","_deleted": true}]}::::0
+POST /source/_bulk_docs HTTP/1.1 Accept: application/json Content-Length: 323 Content-Type: application/json Host: localhost:5984 {"docs": [{"_id": "FishStew","servings": 4,"subtitle": "Delicious with freshly baked bread","title": "FishStew"},{"_id": "LambStew","servings": 6,"subtitle": "Serve with a whole meal scone topping","title": "LambStew"},{"servings": 8,"subtitle": "Hand-made dumplings make a great accompaniment","title": "BeefStew"}]}::::0
+POST /recipes/_bulk_docs HTTP/1.1 Accept: application/json Content-Length: 464 Content-Type: application/json Host: localhost:5984 {"docs": [{"_id": "FishStew","_rev": "1-6a466d5dfda05e613ba97bd737829d67","servings": 4, "subtitle": "Delicious with freshly baked bread", "title": "FishStew"},{"_id": "LambStew","_rev": "1-648f1b989d52b8e43f05aa877092cc7c","servings": 6,"subtitle": "Serve with a whole meal scone topping", "title": "LambStew"},{"_id": "BeefStew", "_rev": "1-e4602845fc4c99674f50b1d5a804fdfa", "servings": 8,"subtitle": "Hand-made dumplings make a great accompaniment","title": "BeefStew"}]}::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 {"selector": {"year": {"$gt": 2010}}} ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 {"selector": {"year": {"$gt": 2010}},"fields": ["_id", "_rev", "year", "title"]}::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host:localhost:5984 {"selector": {"year": {"$gt": 2010} }, "fields": ["_id", "_rev", "year", "title"], "sort": [{"year": "asc"}]} ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": {"$gt": 2010} }, "fields": ["_id", "_rev", "year", "title"], "sort": [{"year": "asc"}], "skip": 0 } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": {"$gt": 2010} }, "fields": ["_id", "_rev", "year", "title"], "sort": [{"year": "asc"}], "limit": 2, "skip": 0 } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": {"$gt": 2010} }, "fields": ["_id", "_rev", "year", "title"], "sort": [{"year": "asc"}], "limit": 2, "skip": 0, "execution_stats": true } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "director": "Lars von Trier" } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "$text": "Bond" }, "fields": [ "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { { "name": "Paul", "location": "Boston" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { { "imdb": { "rating": 8 } } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { { "imdb.rating": 8 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gt": 2010 } } }::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "director": "Lars von Trier" } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "director": { "$eq": "Lars von Trier" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector":{ "imdb": { "rating": { "$eq": 8 } } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$eq": 2001 } }, "sort": [ "title:string" ], "fields": [ "title" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$eq": 2001 } }, "sort": [ "year" ], "fields": [ "year" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "director": "Lars von Trier", "year": 2003 } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "$and": [ { "director": { "$eq": "Lars von Trier" } }, { "year": { "$eq": 2003 } } ] } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "$and": [ { "_id": { "$gt": null } }, { "year": { "$in": [2014, 2015] } } ] } }::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "$and": [ { "$text": "Schwarzenegger" }, { "year": { "$in": [1984, 1991] } } ] }, "fields": [ "year", "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": 1977, "$or": [ { "director": "George Lucas" }, { "director": "Steven Spielberg" } ] } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": 1977, "$or": [ { "director": "George Lucas" }, { "director": "Steven Spielberg" } ] }, "fields": [ "year", "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gte": 1900 }, "year": { "$lte": 1903 }, "$not": { "year": 1901 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gte": 1900 }, "year": { "$lte": 1903 }, "$not": { "year": 1901 } }, "fields": [ "year", "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gte": 1900 }, "year": { "$lte": 1910 }, "$nor": [ { "year": 1901 }, { "year": 1905 }, { "year": 1907 } ] } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gte": 1900 }, "year": { "$lte": 1910 }, "$nor": [ { "year": 1901 }, { "year": 1905 }, { "year": 1907 } ] }, "fields": [ "year", "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "_id": { "$gt": null }, "genre": { "$all": ["Comedy","Short"] } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "_id": { "$gt": null }, "genre": { "$all": ["Comedy","Short"] } }, "fields": [ "year", "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "_id": { "$gt": null }, "genre": { "$elemMatch": { "$eq": "Horror" } } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "_id": { "$gt": null }, "genre": { "$elemMatch": { "$eq": "Horror" } } }, "fields": [ "year", "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "_id": { "$gt": null }, "genre": { "$allMatch": { "$eq": "Horror" } } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "_id": { "$gt": null }, "genre": { "$allMatch": { "$eq": "Horror" } } }, "fields": [ "year", "title", "cast" ] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gt": 2010 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gte": 2010 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$lt": 2010 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$lte": 2010 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$eq": 2010 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$ne": 2010 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$in": [2010,2011,2012] } } }::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$nin": [2010,2011,2012] } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$size": 4 } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$exists": true } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$exists": false } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$type": "null" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$type": "boolean" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$type": "number" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$type": "string" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$type": "array" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$type": "object" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "afieldname": {"$regex": "^A"} } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": {"$mod": [4,0]} } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": {"Actor_name": "Robert De Niro"}, "sort": [{"Actor_name": "asc"}, {"Movie_runtime": "asc"}] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": {"Actor_name": "Robert De Niro"}, "sort": ["Actor_name", "Movie_runtime"] } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "Actor_name": "Robert De Niro" }, "fields": ["Actor_name", "Movie_year", "_id", "_rev"] } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$lt:50}}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $and: [ 	{"by": "tut"}, {"likes" : {$gt:100}} ] 	 }} 			::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $and: [ {"by": "tut"}, {"likes" : {$gt:100}}, {"title" : "hex"} ] }} 						::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"by": "tut"}, {"likes" : {$gt:100}} ] }} 			::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"by": "tut"}, {"likes" : {$gt:100}}, {"title" : "hex"} ] }} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"title" : "hex"}, $and: [ {"by": "tut"}, {"likes" : {$gt:100}} ] ] }} 			::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$ne:5}, "title" : "hex"}, "fields":{"by", "_id"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $and: [ {"by": "tut"}, {"likes" : {$gt:100}} ] }, "fields":{"by", "_id"}} 			 ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"by": "tut"}, {"likes" : {$gt:100}} ] }, "fields":{"by", "_id"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"by": "tut"}, {"likes" : {$gt:100}}, {"title" : "hex"} ] }, "fields":{"by", "_id"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"title" : "hex"}, $and: [ {"by": "tut"}, {"likes" : {$gt:100}} ] ] }, "fields":{"by":1,_id:0}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector":{ $and[ {"for" : "python"}, $or: [ {"title" : "hex"}, $and: [ {"by": "tut"}, {"likes" : {$gt:100}} ] ] ] }, "fields":{"by", "_id"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {selector: { $and[ {"for" : "python"}, $or: [ {"title" : "hex"}, $and: [ {"by": "tut"}, {"likes" : {$gt:100}} ] ] ] }} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {selector:{ awards: { $elemMatch: { award: "Turing Award", year: { $gt: 1980 } } } }} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { $or:[ { name: { first: "Yukihiro", last: "Matsumoto" } }, { awards: { $elemMatch: { award: "Turing Award", year: { $gt: 1980 } } } } ] }} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": {}, "fields": { ‘_id’, 'name.last', ‘contribs’ }} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[ { name: { first: "Yukihiro", last: "Matsumoto" } }, { awards: { $elemMatch: { award: "Turing Award", year: { $gt: 1980 } } } } ] }, "fields":{ "_id", "name.last", "contribs" }}::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $and[ {"for" : "python"}, $or: [ {"title" : "hex"}, $and: [ {"by": "tut"}, {"likes" : {$gt:100}} ] ] ] }, "fields":{ "_id", "name.last", "contribs" } } ::::0
+POST /bios/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ { 'name.first' : /^G/ }, { birth: { $lt: new Date('01/01/1945') } } ] } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ { 'name.first' : /^G/ }, { birth: { $lt: new Date('01/01/1945') } } ] }, "fields":{ "name", "contribs", " _id" } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ contribs: 'OOP' }, "fields":{" _id", "name.first", "birth" } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ { 'name.first' : /^G/ }, { birth: { $lt: new Date('01/01/1945') } } ] }, "fields": { "_id", "name.first", "birth" } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { age : 25 } } ::::0
+POST /documents/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": { query: { a: 1 } } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": {age:{ $gt: 12 }}, "sort": { age : "desc" } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector": {age:{ $gte: 12 }}, "sort": { age : "asc" } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"by" : "Tutorials point", "on": "CouchDB"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$lte:50}}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$gte:50}}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$ne:5}, "title" : "hex"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$gt:50}}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$gt:50}, "title": "hex"}} ::::0
+POST /restaurants/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"fields":{"borough", "address.zipcode", "name"}, sort:{"address.zipcode": "asc"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $and: [ { $or: [{"last_login": "2017-10-08"}, {"last_login": "2017-10-07"}, {"last_login": "2017-10-06"}] }, { $or: [{"address.country": "Spain"}, {"address.country": "France"}] } ] }} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $and: [ { "last_login": { $in: ["2017-10-08", "2017-10-07", "2017-10-06"] }}, { "address.country": { $in: ["Spain", "French"] }}, ] }} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $and: [ { "last_login": { $gte: "2017-10-06" }}, { "address.country": { $in: ["Spain", "French"] }}, ] }}::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ "address.country": { $nin: ["Spain", "French"] } }} ::::0
+POST /shop/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "Selector":{}, "Fields":{"article", "dealer", "price"} } ::::0
+POST /shop/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "Selector":{}, "Fields":{"article", "dealer", "price"}, "limit":10 } ::::0
+POST /shop/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "Selector":{}, "Fields":{"article", "dealer", "price"}, "limit":10, "Sort": {"price": "desc"} } ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ "address": "Luc_now" },"fields": { "officer_name" }} ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ "address": {"$regex": "^Luc.*" },"fields": { "officer_name" }}} ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": {"sex": { $not: /^M.*/}}} ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ "officer_name": { "$in": ["Ajeet", "Vimal", "Deepika"] } } ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "officer_name": { "$not": { "$in": ["Ajeet", "Vimal", "Deepika"] } } }} ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": "officer_name": { "$gte": 3, "$lte": 5 } }} ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "officer_name": { "$lt": 3, "$gt": 5 } }} ::::0
+POST /officers/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "officer_name": null }} ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{}, "limit":3, "skip":1} ::::0
+POST /users/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "username": "rafid", "password": "1234"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { a: 5, b: 5 } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { a: 5, b: { $gt: 10 } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { name: { $in: [ /^acme/i, /^ack/ ] } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { name: { $regex: /acme.*corp/i, $nin: [ 'acmeblahcorp' ] } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { name: { $regex: /acme.*corp/, $nin: [ 'acmeblahcorp' ] } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { name: { $regex: 'acme.*corp', $nin: [ 'acmeblahcorp' ] } }} ::::0
+POST /products/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { sku: { $regex: /789$/ } }} ::::0
+POST /products/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { sku: { $regex: /^ABC/i } }} ::::0
+POST /products/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { description: { $regex: /^S/} }} ::::0
+POST /products/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { description: { $regex: /S/} }} ::::0
+POST /products/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { description: { $regex: /m.*line/} }} ::::0
+POST /articles/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { tags: { $all: [ "ssl", "security" ] } }} ::::0
+POST /articles/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { $and: [ { tags: [ "ssl", "security" ] } ] }} ::::0
+POST /articles/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { tags: {$or: [ "ssl", "security" ]} }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { qty: { $all: [ { "$elemMatch" : { size: "M", num: { $gt: 50} } }, { "$elemMatch" : { num : 100, color: "green" } } ] } } } 				 ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "qty.num": { $all: [ 50 ] } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "tags": { $size: 3 } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "instock": { $elemMatch: { qty: { $gt: 10, $lte: 20 } } } } } ::::0
+POST /scores/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { results: { $elemMatch: { $gte: 80, $lt: 85 } } }} ::::0
+POST /survey/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { results: { $elemMatch: { product: "xyz", score: { $gte: 8 } } } } } ::::0
+POST /survey/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { results: { $elemMatch: { product: "xyz" } } }} ::::0
+POST /students/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "grades.mean": { $gt: 70 } }, "fields": { "grades.$" } } ::::0
+POST /schools/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { zipcode: "63109" }, { students: { $elemMatch: { school: 102 } } }} 				 ::::0
+POST /schools/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { zipcode: "63109" }, { students: { $elemMatch: { school: 102, age: { $gt: 10} } } } } ::::0
+POST /schools/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { zipcode: "63109" }, { students: { $elemMatch: { school: 102, age: { $gt: 10} } } }, "fields": {"students"} } ::::0
+POST /schools/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { zipcode: "63109" }, { students: { $elemMatch: { school: 102 } } } "fields":{"students", "zipcode"}} ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ first_name: {$regex: "^R.*"} }, "limit":3, } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ first_name: {$regex: "^R.*"} }, "limit":3, "fields": {"last_name", "designation"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ first_name: {$regex: "^R.*"} , salary: {$gt: 10000}}, "limit":3, "fields": {"last_name", "designation"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ first_name: {$regex: "^R.*"} , salary: {$gt: 10000}}, "limit":3, "fields": {"last_name", "designation", "salary"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ first_name: {$regex: "^R.*"} , salary: {$gt: 10000}}, "limit":3, "fields": {"last_name", "designation", "salary", "department"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ first_name: {$regex: "^R.*"} , salary: {$gt: 10000}, department: {$or:["HRM", "Finance"]}}, "limit":3, "fields": {"last_name", "designation", "salary", "department"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[first_name: {$regex: "^R.*"} , salary: {$gt: 10000}, department: {$or:["HRM", "Finance"]}]}, "limit":3, "fields": {"last_name", "designation", "salary", "department"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[first_name: {$regex: "^R.*"} , $and:[ salary: {$gt: 10000}, department: {$or:["HRM", "Finance"]}]]}, "limit":3, "fields": {"last_name", "designation", "salary", "department"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[first_name: {$regex: "^R.*"} , $and:[ salary: {$gt: 10000}, department: {$or:["HRM", "Finance"]}]]}, "limit":3, "fields": {"last_name", "salary", "department"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[first_name: {$regex: "^R.*"} , $and:[ salary: {$gt: 10000}, department: {$or:["HRM", "Finance"]}]]}, "limit":3, "fields": {"last_name", "first_name", "salary", "department"} } ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[first_name: {$regex: "^R.*"} , $and:[ salary: {$gt: 10000}, department: {$or:["HRM", "Finance", "IRM"]}]]}}, "limit":3, "fields": {"last_name", "first_name", "salary", "department"} ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[first_name: {$regex: "^R.*"} , $and:[ salary: {$gt: 10000}, department: {$or:["HRM", "Finance", "IRM"]}]]}, "limit":3, "fields": {"last_name", "first_name", "job_title", "salary", "department"} ::::0
+POST /employees/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or:[first_name: {$regex: "^R.*"} , $and:[ salary: {$lt: 90000}, department: {$or:["HRM", "Finance", "IRM"]}]]}, "limit":3, "fields": {"last_name", "first_name", "job_title", "salary", "department"} ::::0
+POST /meal HTTP/1.1 Accept: application/json Content-Type: application/json { "servings": 4, "subtitle": "Delicious with fresh bread", "title": "Fish Stew" } ::::0
+POST /books HTTP/1.1 Accept: application/json Content-Type: application/json { "title": "As you like it", "author": "William Shakespeare" } ::::0
+POST /books HTTP/1.1 Accept: application/json Content-Type: application/json { "title": "The Hobbit", "author": "J.R.R. Tolkien" } ::::0
+POST /books HTTP/1.1 Accept: application/json Content-Type: application/json { "name": "tutorials point" } ::::0
+POST /books HTTP/1.1 Accept: application/json Content-Type: application/json { "_id" : "couchdbinsert", "title" : "CouchDB Overview", "description" : "CouchDB is no sql database", "by" : 'tutorials point', "url": 'http://www.tutorialspoint.com', "tags": [‘CouchDB’, 'database', 'NoSQL'], "likes" : 100 } ::::0
+POST /books HTTP/1.1 Accept: application/json Content-Type: application/json { "_id" : "couchdbinsert", "title" : "CouchDB Overview", "description" : "CouchDB is no sql database", "by" : 'tutorials point' } ::::0
+POST /books HTTP/1.1 Accept: application/json Content-Type: application/json { "_id" : "couchdbinsert", "title" : "CouchDB Overview", "description" : "CouchDB is no sql database", "by" : 'tutorials point', "url": 'http://www.tutorialspoint.com', "likes" : 100 } ::::0
+POST /books?batch=ok HTTP/1.1 Accept: application/json Content-Type: application/json { "_id" : "couchdbinsert", "title" : "CouchDB Overview", "description" : "CouchDB is no sql database", "by" : 'tutorials point', "url": 'http://www.tutorialspoint.com', "tags": [‘CouchDB’, 'database', 'NoSQL'], "likes" : 100 } ::::0
+POST /db?batch=ok HTTP/1.1 Accept: application/json Content-Length: 98 Content-Type: application/json { "_id": "FishStew", "servings": 4, "subtitle": "Delicious with fresh bread", "title": "Fish Stew" } ::::0
+POST /books?batch=ok HTTP/1.1 Accept: application/json Content-Type: application/json { "title": "As you like it", "author": "William Shakespeare" } ::::0
+POST /products/_bulk_docs HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "docs": [ { "_id": "11", "item": "pencil", "qty": 50, "type": "no.2" }, { "item": "pen", "qty": 20 }, { "item": "eraser", "qty": 25 } ] } ::::0
+POST /products/_bulk_docs HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "docs": [ { "_id": "11", "item": "pencil", "qty": 50, "type": "no.2" }, { "item": "pen", "qty": 20 }, { "item": "eraser", "qty": 25 } ], "new_edits" : false } ::::0
+POST /products/_bulk_docs HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "docs": [ { "_id": "20", "item": "lamp", "qty": "50", "type": "desk" }, { "_id": "21", "item": "lamp", "qty": "20", "type": "floor" }, { "_id": "22", "item": "bulk", "qty": "100" } ] } ::::0
+POST /products/_bulk_docs HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "docs": [ { "_id": "20", "item": "lamp", "qty": "50", "type": "desk" }, { "_id": "21", "item": "lamp", "qty": "20", "type": "floor" }, { "_id": "22", "item": "bulk", "qty": "100" } ], "new_edits" : false } ::::0
+POST /products HTTP/1.1 Accept: application/json Content-Length: 98 Content-Type: application/json { "item": "envelopes", "qty" : 100, "type": "Clasp" } ::::0
+POST /products?batch=ok HTTP/1.1 Accept: application/json Content-Length: 98 Content-Type: application/json { "item": "envelopes", "qty" : 100, "type": "Clasp" } ::::0
+PUT /recipes/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Content-Length: 196 Content-Type: application/json Host: localhost:5984 { "description": "An Italian-American dish that usually consists of spaghetti, tomato sauce and meatballs.", "ingredients": [ "spaghetti", "tomato sauce", "meatballs" ], "name": "Spaghetti with meatballs" } ::::0
+PUT /recipes/SpaghettiWithMeatballs?batch=ok HTTP/1.1 Accept: application/json Content-Length: 196 Content-Type: application/json Host: localhost:5984 { "description": "An Italian-American dish that usually consists of spaghetti, tomato sauce and meatballs.", "ingredients": [ "spaghetti", "tomato sauce", "meatballs" ], "name": "Spaghetti with meatballs" } ::::0
+PUT /recipes/SpaghettiWithMeatballs?new_edits=false HTTP/1.1 Accept: application/json Content-Length: 196 Content-Type: application/json Host: localhost:5984 { "description": "An Italian-American dish that usually consists of spaghetti, tomato sauce and meatballs.", "ingredients": [ "spaghetti", "tomato sauce", "meatballs" ], "name": "Spaghetti with meatballs" } ::::0
+PUT /recipes/SpaghettiWithMeatballs?batch=ok&new_edits=false HTTP/1.1 Accept: application/json Content-Length: 196 Content-Type: application/json Host: localhost:5984 { "description": "An Italian-American dish that usually consists of spaghetti, tomato sauce and meatballs.", "ingredients": [ "spaghetti", "tomato sauce", "meatballs" ], "name": "Spaghetti with meatballs" } ::::0
+DELETE /recipes/FishStew?rev=1-9c65296036141e575d32ba9c034dd3ee HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+DELETE /recipes/FishStew HTTP/1.1 Accept: application/json If-Match: 1-9c65296036141e575d32ba9c034dd3ee Host: localhost:5984 ::::0
+DELETE /recipes/FishStew?rev=1-9c65296036141e575d32ba9c034dd3ee&batch=ok HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+DELETE /recipes/FishStew?batch=ok HTTP/1.1 Accept: application/json If-Match: 1-9c65296036141e575d32ba9c034dd3ee Host: localhost:5984 ::::0
+PUT /recipes/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Content-Length: 258 Content-Type: application/json Host: localhost:5984 { "_rev": "1-917fa2381192822767f010b95b45325b", "description": "An Italian-American dish that usually consists of spaghetti, tomato sauce and meatballs.", "ingredients": [ "spaghetti", "tomato sauce", "meatballs" ], "name": "Spaghetti with meatballs", "serving": "hot" } ::::0
+PUT /recipes/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Content-Length: 258 Content-Type: application/json If-Match: 1-917fa2381192822767f010b95b45325b Host: localhost:5984 { "description": "An Italian-American dish that usually consists of spaghetti, tomato sauce and meatballs.", "ingredients": [ "spaghetti", "tomato sauce", "meatballs" ], "name": "Spaghetti with meatballs", "serving": "hot" } ::::0
+PUT /books/couchdbinsert HTTP/1.1 Accept: application/json Content-Type: application/json { "_rev": "1-917fa2381192822767f010b95b45325b", "title" : "New CouchDB Overview", "description" : "CouchDB is no sql database", "by" : 'tutorials point', "url": 'http://www.tutorialspoint.com', "tags": [‘CouchDB’, 'database', 'NoSQL'], "likes" : 100 } ::::0
+PUT /products/envelopes HTTP/1.1 Accept: application/json Content-Length: 98 Content-Type: application/json { "_rev": "1-917fa2381192822767f010b95b45325b", "item": "envelopes", "qty" : 100, "type": "Clasp" } ::::0
+PUT /products/envelopes HTTP/1.1 Accept: application/json Content-Length: 98 If-Match: 1-917fa2381192822767f010b95b45325b Content-Type: application/json { "item": "envelopes", "qty" : 100, "type": "Clasp" } ::::0
+PUT /products/envelopes?batch=ok HTTP/1.1 Accept: application/json Content-Length: 98 If-Match: 1-917fa2381192822767f010b95b45325b Content-Type: application/json { "item": "envelopes", "qty" : 100, "type": "Clasp" } ::::0
+COPY /recipes/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Destination: SpaghettiWithMeatballs_Original If-Match: 1-917fa2381192822767f010b95b45325b Host: localhost:5984 ::::0
+COPY /recipes/SpaghettiWithMeatballs?rev=1-917fa2381192822767f010b95b45325b HTTP/1.1 Accept: application/json Destination: SpaghettiWithMeatballs_Original Host: localhost:5984 ::::0
+COPY /recipes/SpaghettiWithMeatballs?rev=8-6f5ad8db0f34af24a6e0984cd1a6cfb9 HTTP/1.1 Accept: application/json Destination: SpaghettiWithMeatballs_Original?rev=1-917fa2381192822767f010b95b45325b Host: localhost:5984 ::::0
+COPY /recipes/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Destination: SpaghettiWithMeatballs_Original?rev=1-917fa2381192822767f010b95b45325b If-Match: 8-6f5ad8db0f34af24a6e0984cd1a6cfb9 Host: localhost:5984 ::::0
+GET /recipes/FishStew HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/FishStew?rev=2-056f5f44046ecafc08a2bc2b9c229e20 HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/FishStew HTTP/1.1 Accept: application/json If-match: 2-056f5f44046ecafc08a2bc2b9c229e20 Host: localhost:5984 ::::0
+GET /recipes/SpaghettiWithMeatballs?revs_info=true HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/SpaghettiWithMeatballs?revs=true HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /db/pixel?attachments=true HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/SpaghettiWithMeatballs?atts_since=[%224-874985bc28906155ba0e2e0538f67b05%22] HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/secret?attachments=true HTTP/1.1 Accept: multipart/related Host: localhost:5984 ::::0
+GET /recipes/SpaghettiWithMeatballs?att_encoding_info=true HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+PUT /temp/somedoc HTTP/1.1 Accept: application/json Content-Length: 372 Content-Type: multipart/related;boundary="abc123" Host: localhost:5984 User-Agent: HTTPie/0.6.0 Content-Type: application/json { "body": "This is a body.", "_attachments": { "foo.txt": { "follows": true, "content_type": "text/plain", "length": 21 }, "bar.txt": { "follows": true, "content_type": "text/plain", "length": 20 } } } ::::0
+HEAD /db/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+HEAD /db/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json If-None-Match: "xyzzy" Host: localhost:5984 ::::0
+HEAD /recipes/SpaghettiWithMeatballs/recipe.txt HTTP/1.1 Host: localhost:5984 ::::0
+PUT /recipes/SpaghettiWithMeatballs/recipe.txt HTTP/1.1 Accept: application/json Content-Length: 86 Content-Type: text/plain Host: localhost:5984 If-Match: 1-917fa2381192822767f010b95b45325b 1. Cook spaghetti 2. Cook meatballs 3. Mix them 4. Add tomato sauce 5. ... 6. PROFIT! ::::0
+DELETE /recipes/SpaghettiWithMeatballs?rev=6-440b2dd39c20413045748b42c6aba6e2 HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+DELETE /recipes/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json If-Match: 6-440b2dd39c20413045748b42c6aba6e2 Host: localhost:5984 ::::0
+GET /db/_design_docs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /db/_all_docs HTTP/1.1 Accept: application/json Content-Length: 70 Content-Type: application/json Host: localhost:5984  {  "keys" : [  "_design/ddoc02",  "_design/ddoc05"  ] } ::::0
+POST /db/_all_docs/queries HTTP/1.1 Content-Type: application/json Accept: application/json Host: localhost:5984  {  "queries": [  {  "keys": [  "meatballs",  "spaghetti"  ]  },  {  "limit": 3,  "skip": 2  }  ] } ::::0
+POST /db/_bulk_get HTTP/1.1 Accept: application/json Content-Type:application/json Host: localhost:5984  {  "docs": [  {  "id": "foo"  "rev": "4-753875d51501a6b1883a9d62b4d33f91",  },  {  "id": "foo"  "rev": "1-4a7e4ae49c4366eaed8edeaea8f784ad",  },  {  "id": "bar",  }  ] } ::::0
+POST /db/_index HTTP/1.1 Content-Type: application/json Content-Length: 116 Host: localhost:5984  {  "index": {  "fields": ["foo"]  },  "name" : "foo-index",  "type" : "json" } ::::0
+POST /db/_index HTTP/1.1 Content-Type: application/json Content-Length: 144 Host: localhost:5984  {  "index": {  "partial_filter_selector": {  "status": {  "$ne": "archived"  }  },  "fields": ["type"]  },  "ddoc" : "type-not-archived",  "type" : "json" } ::::0
+GET /db/_index HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+DELETE /db/_index/_design/a5f4711fc9448864a13c81dc71e660b524d7410c/json/foo-index HTTP/1.1 Accept: */* Host: localhost:5984 ::::0
+POST /movies/_explain HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984  {  "selector": {  "year": {"$gt": 2010}  },  "fields": ["_id", "_rev", "year", "title"],  "sort": [{"year": "asc"}],  "limit": 2,  "skip": 0 } ::::0
+GET /db/_changes?style=all_docs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /recipes/_changes?filter=_doc_ids HTTP/1.1 Accept: application/json Content-Length: 40 Content-Type: application/json Host: localhost:5984  {  "doc_ids": [  "SpaghettiWithMeatballs"  ] } ::::0
+GET /somedatabase/_changes HTTP/1.1  ::::0
+GET /somedatabase/_changes?feed=continuous HTTP/1.1  ::::0
+GET /db/_changes?filter=design_doc/filtername HTTP/1.1  ::::0
+POST /recipes/_changes?filter=_selector HTTP/1.1 Content-Type: application/json Host: localhost:5984  {  "selector": { "_id": { "$regex": "^_design/" } } } ::::0
+GET /recipes/_changes?filter=_design HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/_changes?filter=_view&view=ingredients/by_recipe HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /db/_compact HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 ::::0
+POST /db/_compact/posts HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 ::::0
+POST /db/_ensure_full_commit HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 ::::0
+POST /db/_view_cleanup HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 ::::0
+GET /db/_security HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+PUT /db/_security HTTP/1.1 Accept: application/json Content-Length: 121 Content-Type: application/json Host: localhost:5984  {  "admins": {  "names": [  "superuser"  ],  "roles": [  "admins"  ]  },  "members": {  "names": [  "user1",  "user2"  ],  "roles": [  "developers"  ]  } } ::::0
+POST /db/_purge HTTP/1.1 Accept: application/json Content-Length: 76 Content-Type: application/json Host: localhost:5984  {  "c6114c65e295552ab1019e2b046b10e": [  "3-b06fcd1c1c9e0ec7c480ee8aa467bf3b",  "3-0e871ef78849b0c206091f1a7af6ec41"  ] } ::::0
+POST /db/_missing_revs HTTP/1.1 Accept: application/json Content-Length: 76 Content-Type: application/json Host: localhost:5984  {  "c6114c65e295552ab1019e2b046b10e": [  "3-b06fcd1c1c9e0ec7c480ee8aa467bf3b",  "3-0e871ef78849b0c206091f1a7af6ec41"  ] } ::::0
+POST /db/_revs_diff HTTP/1.1 Accept: application/json Content-Length: 113 Content-Type: application/json Host: localhost:5984  {  "190f721ca3411be7aa9477db5f948bbb": [  "3-bb72a7682290f94a985f7afac8b27137",  "4-10265e5a26d807a3cfa459cf1a82ef2e",  "5-067a00dff5e02add41819138abb3284d"  ] } ::::0
+GET /db/_revs_limit HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+PUT /db/_revs_limit HTTP/1.1 Accept: application/json Content-Length: 5 Content-Type: application/json Host: localhost:5984  1000  ::::0
+HEAD /db/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Host: localhost:5984  ::::0
+GET / HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_active_tasks HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_all_dbs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /_dbs_info HTTP/1.1 Accept: application/json Host: localhost:5984 Content-Type: application/json  {  "keys": [  "animals",  "plants"  ] } ::::0
+GET /_cluster_setup HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_db_updates HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_membership HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /_replicate HTTP/1.1 Accept: application/json Content-Length: 36 Content-Type: application/json Host: localhost:5984  {  "source": "db_a",  "target": "db_b" } ::::0
+POST http://couchdb:5984/_replicate HTTP/1.1 Content-Type: application/json Accept: application/json  {  "source" : "recipes",  "target" : "http://coucdb-remote:5984/recipes", } ::::0
+POST http://couchdb:5984/_replicate HTTP/1.1 Content-Type: application/json Accept: application/json  {  "create_target" : true  "source" : "recipes",  "target" : "http://couchdb-remote:5984/recipes", } ::::0
+POST http://couchdb:5984/_replicate HTTP/1.1 Accept: application/json Content-Type: application/json  {  "source" : "recipes",  "target" : "recipes-snapshot", } ::::0
+POST http://couchdb:5984/_replicate HTTP/1.1 Accept: application/json Content-Type: application/json  {  "continuous" : true  "source" : "recipes",  "target" : "http://couchdb-remote:5984/recipes", } ::::0
+POST http://couchdb:5984/_replicate HTTP/1.1 Content-Type: application/json Accept: application/json  {  "source" : "recipes",  "target" : "http://couchdb-remote:5984/recipes",  "create_target" : true,  "continuous" : true } ::::0
+POST http://couchdb:5984/_replicate HTTP/1.1 Accept: application/json Content-Type: application/json  {  "cancel" : true,  "continuous" : true  "create_target" : true,  "source" : "recipes",  "target" : "http://couchdb-remote:5984/recipes", }  GET /_scheduler/jobs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_scheduler/docs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_scheduler/docs/other/_replicator HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_scheduler/docs/other/_replicator/cdyno-0000001-0000002 HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_node/_local/_stats/couchdb/request_time HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_node/_local/_system HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_uuids?count=10 HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+PUT http://couchdb:5984/_node/nonode@nohost/_config/uuids/algorithm HTTP/1.1 Content-Type: application/json Accept: */*  "random" ::::0
+GET / HTTP/1.1 Accept: application/json Authorization: Basic cm9vdDpyZWxheA== Host: localhost:5984 ::::0
+POST /_session HTTP/1.1 Accept: application/json Content-Length: 24 Content-Type: application/x-www-form-urlencoded Host: localhost:5984  name=root&password=relax ::::0
+POST /_session HTTP/1.1 Accept: application/json Content-Length: 37 Content-Type: application/json Host: localhost:5984  {  "name": "root",  "password": "relax" } ::::0
+POST /_session?next=/blog/_design/sofa/_rewrite/recent-posts HTTP/1.1 Accept: application/json Content-Type: application/x-www-form-urlencoded Host: localhost:5984  name=root&password=relax ::::0
+GET /_session HTTP/1.1 Host: localhost:5984 Accept: application/json Cookie: AuthSession=cm9vdDo1MEJDMDQxRDpqb-Ta9QfP9hpdPjHLxNTKg_Hf9w ::::0
+DELETE /_session HTTP/1.1 Accept: application/json Cookie: AuthSession=cm9vdDo1MjA1NEVGMDo1QXNQkqC_0Qmgrk8Fw61_AzDeXw Host: localhost:5984 ::::0
+GET /_session HTTP/1.1 Host: localhost:5984 Accept: application/json Content-Type: application/json; charset=utf-8 X-Auth-CouchDB-Roles: users,blogger X-Auth-CouchDB-UserName: foo ::::0
+GET /_node/nonode@nohost/_config HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_node/nonode@nohost/_config/httpd HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /_node/nonode@nohost/_config/log/level HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+PUT /_node/nonode@nohost/_config/log/level HTTP/1.1 Accept: application/json Content-Length: 7 Content-Type: application/json Host: localhost:5984  "info" ::::0
+DELETE /_node/nonode@nohost/_config/log/level HTTP/1.1 Accept: application/json Host: localhost:5984  ::::0
+GET /recipes HTTP/1.1 Host: couchdb:5984 Accept: */*::::0
+GET /recipes HTTP/1.1 Host: couchdb:5984 Accept: application/json::::0
+GET /recipes/_design/recipe/_info HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/_design/ingredients/_view/by_name HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /recipes/_design/ingredients/_view/by_name HTTP/1.1 Accept: application/json Content-Length: 37 Host: localhost:5984  {  "keys": [  "meatballs",  "spaghetti"  ] } ::::0
+GET /db/_design/test/_view/sorting HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /db/_design/test/_view/sorting?descending=true HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET http://couchdb:5984/recipes/_design/recipes/_view/by_ingredient?startkey=%22carrots%22&endkey=%22egg%22 HTTP/1.1 Accept: application/json ::::0
+GET /recipes/_design/recipes/_view/by_ingredient?descending=true&startkey=%22carrots%22&endkey=%22egg%22 HTTP/1.1 Accept: application/json Host: localhost:5984  {  "total_rows" : 26453,  "rows" : [],  "offset" : 21882 } ::::0
+GET /recipes/_design/recipes/_view/by_ingredient?descending=true&startkey=%22egg%22&endkey=%22carrots%22 HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/_design/recipes/_view/by_title?limit=5 HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/_design/recipes/_view/by_title?limit=3&skip=2 HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /recipes/_design/recipes/_view/by_title/queries HTTP/1.1 Content-Type: application/json Accept: application/json Host: localhost:5984  {  "queries": [  {  "keys": [  "meatballs",  "spaghetti"  ]  },  {  "limit": 3,  "skip": 2  }  ] } ::::0
+POST /recipes/_design/recipes/_view/by_title HTTP/1.1 Content-Type: application/json Accept: application/json Host: localhost:5984  {  "queries": [  {  "keys": [  "meatballs",  "spaghetti"  ]  },  {  "limit": 3,  "skip": 2  }  ] } ::::0
+GET /recipes/_design/recipe/_show/description HTTP/1.1 Accept: application/json Host: localhost:5984  ::::0
+GET /recipes/_design/recipe/_show/description/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+GET /recipes/_design/recipe/_list/ingredients/by_name HTTP/1.1 Accept: text/plain Host: localhost:5984 ::::0
+GET /recipes/_design/ingredient/_list/ingredients/recipe/by_ingredient?key="spaghetti" HTTP/1.1 Accept: text/plain Host: localhost:5984 ::::0
+POST /recipes/_design/recipe/_update/ingredients HTTP/1.1 Accept: application/json Content-Length: 10 Content-Type: application/json Host: localhost:5984  "something" ::::0
+POST /recipes/_design/recipe/_update/ingredients/SpaghettiWithMeatballs HTTP/1.1 Accept: application/json Content-Length: 5 Content-Type: application/json Host: localhost:5984  "love" ::::0
+GET /db/_local_docs HTTP/1.1 Accept: application/json Host: localhost:5984 ::::0
+POST /db/_local_docs HTTP/1.1 Accept: application/json Content-Length: 70 Content-Type: application/json Host: localhost:5984  {  "keys" : [  "_local/localdoc02",  "_local/localdoc05"  ] } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"by": "_id"}, {"likes" : {$gt:50}}, {"title" : "hex"} ] }, "fields":{"by", "tut"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{ $or: [ {"title" : "hex"}, $and: [ {"by": "tut"}, {"likes" : {$gt:100}} ] ] }, "fields":{"by":1,tut:0}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 { "selector":{ $and[ {"for" : "python"}, $or: [ {"title" : "hex"}, $and: [ {"by": "_id"}, {"likes" : {$gt:100}} ] ] ] }, "fields":{"by", "tut"}} ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$gt": 1990 } } }::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "director": "Alejandro González Iñárritu" } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "director": { "$eq": "Alejandro González Iñárritu" } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector":{ "imdb": { "rating": { "$gt": 7 } } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$nin": [2016,2017] } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$size": {$gt: 3} } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$exists": true } } } ::::0
+POST /movies/_find HTTP/1.1 Accept: application/json Content-Type: application/json Content-Length: 168 Host: localhost:5984 { "selector": { "year": { "$exists": false } } } ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$eq: 15}, "title" : "bin"}} ::::0
+POST /collection/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector":{"likes" : {$gt: 100}}} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { dim_cm: { $elemMatch: { $gt: 50, $lt: 100 } } }} ::::0
+POST /inventory/_find HTTP/1.1 Accept: application/json Content-Type: application/json Host: localhost:5984 {"selector": { "tags": { $size: {$lt: 20} } }} ::::0
